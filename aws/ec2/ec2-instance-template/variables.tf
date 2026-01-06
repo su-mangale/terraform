@@ -15,15 +15,28 @@ variable "subnet_id" {
   type        = string
 }
 
-variable "security_group_ids" {
-  description = "List of security group IDs to associate with the instance."
-  type        = list(string)
+variable "key_pair_name" {
+  description = "Name for the AWS key pair that Terraform will create and attach to the instance."
+  type        = string
+  default     = "ec2-instance-template-key"
 }
 
-variable "key_name" {
-  description = "Existing EC2 key pair to attach. Leave empty to skip SSH access."
-  type        = string
-  default     = ""
+variable "additional_security_group_ids" {
+  description = "Optional extra security groups to attach alongside the generated group."
+  type        = list(string)
+  default     = []
+}
+
+variable "ingress_cidr_blocks" {
+  description = "IPv4 CIDRs allowed to access ports 22/80/443."
+  type        = list(string)
+  default     = ["0.0.0.0/0"]
+}
+
+variable "ingress_ipv6_cidr_blocks" {
+  description = "IPv6 CIDRs allowed to access ports 22/80/443. Use an empty list to disable IPv6 ingress."
+  type        = list(string)
+  default     = ["::/0"]
 }
 
 variable "associate_public_ip" {
