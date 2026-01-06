@@ -11,7 +11,10 @@
 			"enableNonRootDocker": "true",
 			"moby": "true"
 		},
-		"ghcr.io/devcontainers/features/terraform:1": {}
+		"ghcr.io/devcontainers/features/terraform:1": {},
+		"ghcr.io/devcontainers/features/aws-cli:1": {
+			"version": "latest"
+		}
 	}
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
